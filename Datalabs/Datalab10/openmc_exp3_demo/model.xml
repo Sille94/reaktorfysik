@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model>
+  <materials>
+    <material id="163" name="uo2" depletable="true" temperature="1200">
+      <density value="10.5" units="g/cm3"/>
+      <nuclide name="U235" ao="0.04"/>
+      <nuclide name="U238" ao="0.96"/>
+      <nuclide name="O16" ao="2.0"/>
+    </material>
+    <material id="164" name="zirconium" temperature="900">
+      <density value="6.6" units="g/cm3"/>
+      <nuclide name="Zr90" ao="0.5145"/>
+      <nuclide name="Zr91" ao="0.1122"/>
+      <nuclide name="Zr92" ao="0.1715"/>
+      <nuclide name="Zr94" ao="0.1738"/>
+      <nuclide name="Zr96" ao="0.028"/>
+    </material>
+    <material id="165" name="h2o">
+      <density value="0.74" units="g/cm3"/>
+      <nuclide name="H1" ao="2.0"/>
+      <nuclide name="O16" ao="1.0"/>
+      <sab name="c_H_in_H2O"/>
+    </material>
+  </materials>
+  <geometry>
+    <cell id="217" name="fuel" material="163" region="-379" universe="55"/>
+    <cell id="218" name="air gap" material="void" region="379 -380" universe="55"/>
+    <cell id="219" name="clad" material="164" region="380 -381" universe="55"/>
+    <cell id="220" name="moderator" material="165" region="382 -383 384 -385 381" universe="55"/>
+    <surface id="379" type="z-cylinder" coeffs="0.0 0.0 0.41"/>
+    <surface id="380" type="z-cylinder" coeffs="0.0 0.0 0.42"/>
+    <surface id="381" type="z-cylinder" coeffs="0.0 0.0 0.45"/>
+    <surface id="382" type="x-plane" boundary="reflective" coeffs="-0.63"/>
+    <surface id="383" type="x-plane" boundary="reflective" coeffs="0.63"/>
+    <surface id="384" type="y-plane" boundary="reflective" coeffs="-0.63"/>
+    <surface id="385" type="y-plane" boundary="reflective" coeffs="0.63"/>
+  </geometry>
+  <settings>
+    <run_mode>eigenvalue</run_mode>
+    <particles>500</particles>
+    <batches>100</batches>
+    <inactive>10</inactive>
+    <source type="independent" strength="1.0" particle="neutron">
+      <space type="point">
+        <parameters>0 0 0</parameters>
+      </space>
+    </source>
+    <output>
+      <tallies>false</tallies>
+    </output>
+  </settings>
+  <tallies>
+    <filter id="2" type="cell">
+      <bins>217</bins>
+    </filter>
+    <filter id="1" type="energy">
+      <bins>0.0 0.5170399957287 20000000.0</bins>
+    </filter>
+    <filter id="3" type="cell">
+      <bins>220</bins>
+    </filter>
+    <tally id="1" name="fuel_rates">
+      <filters>2 1</filters>
+      <scores>absorption nu-fission</scores>
+    </tally>
+    <tally id="2" name="moderator_abs">
+      <filters>3 1</filters>
+      <scores>absorption</scores>
+    </tally>
+  </tallies>
+</model>
