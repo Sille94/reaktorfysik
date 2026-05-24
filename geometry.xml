@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<geometry>
+  <cell id="1" name="fuel" material="2" region="-1" universe="1"/>
+  <cell id="2" name="air gap" material="4" region="1 -3" universe="1"/>
+  <cell id="3" name="clad" material="3" region="3 -2" universe="1"/>
+  <cell id="4" name="moderator" material="1" region="2 4 -5 6 -7" universe="1"/>
+  <cell id="5" name="guide tube water" material="1" region="-9" universe="2"/>
+  <cell id="6" name="guide tube clad" material="3" region="9 -8" universe="2"/>
+  <cell id="7" name="guide tube moderator" material="1" region="8 10 -11 12 -13" universe="2"/>
+  <cell id="8" name="assembly cell" fill="3" region="14 -15 16 -17" universe="4"/>
+  <lattice id="3" name="assembly">
+    <pitch>1.62 1.62</pitch>
+    <dimension>17 17</dimension>
+    <lower_left>-13.770000000000001 -13.770000000000001</lower_left>
+    <universes>
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 2 1 1 2 1 1 2 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 2 1 1 2 1 1 2 1 1 2 1 1 2 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 2 1 1 2 1 1 2 1 1 2 1 1 2 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 2 1 1 2 1 1 2 1 1 2 1 1 2 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 2 1 1 2 1 1 2 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </universes>
+  </lattice>
+  <surface id="1" type="z-cylinder" coeffs="0.0 0.0 0.41"/>
+  <surface id="2" type="z-cylinder" coeffs="0.0 0.0 0.45"/>
+  <surface id="3" type="z-cylinder" coeffs="0.0 0.0 0.42"/>
+  <surface id="4" type="x-plane" coeffs="-0.81"/>
+  <surface id="5" type="x-plane" coeffs="0.81"/>
+  <surface id="6" type="y-plane" coeffs="-0.81"/>
+  <surface id="7" type="y-plane" coeffs="0.81"/>
+  <surface id="8" type="z-cylinder" coeffs="0.0 0.0 0.45"/>
+  <surface id="9" type="z-cylinder" coeffs="0.0 0.0 0.42"/>
+  <surface id="10" type="x-plane" coeffs="-0.81"/>
+  <surface id="11" type="x-plane" coeffs="0.81"/>
+  <surface id="12" type="y-plane" coeffs="-0.81"/>
+  <surface id="13" type="y-plane" coeffs="0.81"/>
+  <surface id="14" type="x-plane" boundary="reflective" coeffs="-13.770000000000001"/>
+  <surface id="15" type="x-plane" boundary="reflective" coeffs="13.770000000000001"/>
+  <surface id="16" type="y-plane" boundary="reflective" coeffs="-13.770000000000001"/>
+  <surface id="17" type="y-plane" boundary="reflective" coeffs="13.770000000000001"/>
+</geometry>
