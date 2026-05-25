@@ -1,13 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <model>
   <materials>
-    <material id="1" name="UO2" depletable="true" temperature="1200">
+    <material id="9" name="coolant">
+      <density value="0.74" units="g/cm3"/>
+      <nuclide name="H1" ao="2.0"/>
+      <nuclide name="O16" ao="1.0"/>
+      <sab name="c_H_in_H2O"/>
+    </material>
+    <material id="10" name="fuel" depletable="true" temperature="1200">
       <density value="10.5" units="g/cm3"/>
       <nuclide name="U235" ao="0.04"/>
       <nuclide name="U238" ao="0.96"/>
       <nuclide name="O16" ao="2.0"/>
     </material>
-    <material id="2" name="Zirconium" temperature="900">
+    <material id="11" name="clad" temperature="900">
       <density value="6.6" units="g/cm3"/>
       <nuclide name="Zr90" ao="0.5145"/>
       <nuclide name="Zr91" ao="0.1122"/>
@@ -15,69 +21,102 @@
       <nuclide name="Zr94" ao="0.1738"/>
       <nuclide name="Zr96" ao="0.028"/>
     </material>
-    <material id="19" name="water">
-      <density value="0.74" units="g/cm3"/>
-      <nuclide name="H1" ao="2.0"/>
-      <nuclide name="O16" ao="1.0"/>
-      <nuclide name="B10" ao="0.000343366015625"/>
-      <nuclide name="B11" ao="0.001389055859375"/>
-      <sab name="c_H_in_H2O"/>
+    <material id="12" name="gap">
+      <density value="0.001598" units="g/cm3"/>
+      <nuclide name="He4" ao="1.0"/>
+    </material>
+    <material id="13" name="gad_fuel" depletable="true" temperature="1200">
+      <density value="10.5" units="g/cm3"/>
+      <nuclide name="U235" ao="0.0376"/>
+      <nuclide name="U238" ao="0.9023999999999999"/>
+      <nuclide name="O16" ao="1.88"/>
+      <nuclide name="Gd155" ao="0.06"/>
     </material>
   </materials>
   <geometry>
-    <cell id="529" name="fuel" material="1" region="-1123" universe="265"/>
-    <cell id="530" name="air gap" material="void" region="1123 -1125" universe="265"/>
-    <cell id="531" name="clad" material="2" region="1125 -1124" universe="265"/>
-    <cell id="532" name="moderator" material="19" region="1124 1126 -1127 1128 -1129" universe="265"/>
-    <cell id="533" name="guide tube water" material="19" region="-1131" universe="266"/>
-    <cell id="534" name="guide tube clad" material="2" region="1131 -1130" universe="266"/>
-    <cell id="535" name="guide tube moderator" material="19" region="1130 1132 -1133 1134 -1135" universe="266"/>
-    <cell id="536" name="assembly cell" fill="267" region="1136 -1137 1138 -1139" universe="268"/>
-    <lattice id="267" name="assembly">
-      <pitch>1.6200000000000006 1.6200000000000006</pitch>
+    <cell id="17" name="fuel" material="10" region="-35" universe="9"/>
+    <cell id="18" name="air gap" material="12" region="35 -37" universe="9"/>
+    <cell id="19" name="clad" material="11" region="37 -36" universe="9"/>
+    <cell id="20" name="moderator" material="9" region="36 38 -39 40 -41" universe="9"/>
+    <cell id="21" name="guide tube water" material="9" region="-43" universe="10"/>
+    <cell id="22" name="guide tube clad" material="11" region="43 -42" universe="10"/>
+    <cell id="23" name="guide tube moderator" material="9" region="42 44 -45 46 -47" universe="10"/>
+    <cell id="24" name="fuel" material="13" region="-48" universe="11"/>
+    <cell id="25" name="air gap" material="12" region="48 -50" universe="11"/>
+    <cell id="26" name="clad" material="11" region="50 -49" universe="11"/>
+    <cell id="27" name="moderator" material="9" region="49 51 -52 53 -54" universe="11"/>
+    <cell id="28" name="assembly cell" fill="12" region="55 -56 57 -58" universe="13"/>
+    <lattice id="12" name="assembly">
+      <pitch>1.62 1.62</pitch>
       <dimension>17 17</dimension>
-      <lower_left>-13.770000000000005 -13.770000000000005</lower_left>
+      <lower_left>-13.770000000000001 -13.770000000000001</lower_left>
       <universes>
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 265 265 265 266 265 265 266 265 265 266 265 265 265 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 266 265 265 266 265 265 266 265 265 266 265 265 266 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 266 265 265 266 265 265 266 265 265 266 265 265 266 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 266 265 265 266 265 265 266 265 265 266 265 265 266 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 265 265 265 266 265 265 266 265 265 266 265 265 265 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 
-265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 265 </universes>
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 10 9 9 10 9 9 10 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 11 9 9 9 11 9 9 9 11 9 9 9 9 
+9 9 10 9 9 10 9 9 10 9 9 10 9 9 10 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 10 9 11 10 9 9 10 9 9 10 11 9 10 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 10 9 9 10 9 9 10 9 9 10 9 9 10 9 9 
+9 9 9 9 11 9 9 9 11 9 9 9 11 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 10 9 9 10 9 9 10 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 </universes>
     </lattice>
-    <surface id="1123" type="z-cylinder" coeffs="0.0 0.0 0.41"/>
-    <surface id="1124" type="z-cylinder" coeffs="0.0 0.0 0.45"/>
-    <surface id="1125" type="z-cylinder" coeffs="0.0 0.0 0.42"/>
-    <surface id="1126" type="x-plane" coeffs="-0.8100000000000003"/>
-    <surface id="1127" type="x-plane" coeffs="0.8100000000000003"/>
-    <surface id="1128" type="y-plane" coeffs="-0.8100000000000003"/>
-    <surface id="1129" type="y-plane" coeffs="0.8100000000000003"/>
-    <surface id="1130" type="z-cylinder" coeffs="0.0 0.0 0.45"/>
-    <surface id="1131" type="z-cylinder" coeffs="0.0 0.0 0.42"/>
-    <surface id="1132" type="x-plane" coeffs="-0.8100000000000003"/>
-    <surface id="1133" type="x-plane" coeffs="0.8100000000000003"/>
-    <surface id="1134" type="y-plane" coeffs="-0.8100000000000003"/>
-    <surface id="1135" type="y-plane" coeffs="0.8100000000000003"/>
-    <surface id="1136" type="x-plane" boundary="reflective" coeffs="-13.770000000000005"/>
-    <surface id="1137" type="x-plane" boundary="reflective" coeffs="13.770000000000005"/>
-    <surface id="1138" type="y-plane" boundary="reflective" coeffs="-13.770000000000005"/>
-    <surface id="1139" type="y-plane" boundary="reflective" coeffs="13.770000000000005"/>
+    <surface id="35" type="z-cylinder" coeffs="0.0 0.0 0.41"/>
+    <surface id="36" type="z-cylinder" coeffs="0.0 0.0 0.45"/>
+    <surface id="37" type="z-cylinder" coeffs="0.0 0.0 0.42"/>
+    <surface id="38" type="x-plane" coeffs="-0.81"/>
+    <surface id="39" type="x-plane" coeffs="0.81"/>
+    <surface id="40" type="y-plane" coeffs="-0.81"/>
+    <surface id="41" type="y-plane" coeffs="0.81"/>
+    <surface id="42" type="z-cylinder" coeffs="0.0 0.0 0.45"/>
+    <surface id="43" type="z-cylinder" coeffs="0.0 0.0 0.42"/>
+    <surface id="44" type="x-plane" coeffs="-0.81"/>
+    <surface id="45" type="x-plane" coeffs="0.81"/>
+    <surface id="46" type="y-plane" coeffs="-0.81"/>
+    <surface id="47" type="y-plane" coeffs="0.81"/>
+    <surface id="48" type="z-cylinder" coeffs="0.0 0.0 0.41"/>
+    <surface id="49" type="z-cylinder" coeffs="0.0 0.0 0.45"/>
+    <surface id="50" type="z-cylinder" coeffs="0.0 0.0 0.42"/>
+    <surface id="51" type="x-plane" coeffs="-0.81"/>
+    <surface id="52" type="x-plane" coeffs="0.81"/>
+    <surface id="53" type="y-plane" coeffs="-0.81"/>
+    <surface id="54" type="y-plane" coeffs="0.81"/>
+    <surface id="55" type="x-plane" boundary="reflective" coeffs="-13.770000000000001"/>
+    <surface id="56" type="x-plane" boundary="reflective" coeffs="13.770000000000001"/>
+    <surface id="57" type="y-plane" boundary="reflective" coeffs="-13.770000000000001"/>
+    <surface id="58" type="y-plane" boundary="reflective" coeffs="13.770000000000001"/>
   </geometry>
   <settings>
     <run_mode>eigenvalue</run_mode>
-    <particles>5000</particles>
-    <batches>150</batches>
-    <inactive>30</inactive>
+    <particles>8000</particles>
+    <batches>120</batches>
+    <inactive>20</inactive>
+    <source type="independent" strength="1.0" particle="neutron">
+      <space type="fission">
+        <parameters>-10 -10 -1 10 10 1</parameters>
+      </space>
+    </source>
   </settings>
-  </model>
+  <tallies>
+    <mesh id="3">
+      <dimension>200 200</dimension>
+      <lower_left>-13.770000000000001 -13.770000000000001</lower_left>
+      <upper_right>13.770000000000001 13.770000000000001</upper_right>
+    </mesh>
+    <filter id="3" type="mesh">
+      <bins>3</bins>
+    </filter>
+    <tally id="3" name="flux">
+      <filters>3</filters>
+      <scores>flux</scores>
+    </tally>
+  </tallies>
+</model>
